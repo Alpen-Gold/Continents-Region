@@ -1,0 +1,39 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+* {
+  box-sizing: border-box;
+}
+
+.card-rightn {
+  background-color: blue;
+}
+.card-republik {
+  box-shadow: 0 10px 10px 0 #00000044;
+  border-radius: 10px;
+  padding: 20px 0;
+  padding: 30px !important;
+  height: 200px;
+  img {
+    width: 200px;
+    height: 100px;
+    object-fit: cover;
+  }
+}
+
+#flag {
+  flex: 1;
+}
+.info {
+  flex: 1;
+  span {
+    font-weight: bold;
+  }
+  a {
+    text-decoration: none;
+  }
+}
