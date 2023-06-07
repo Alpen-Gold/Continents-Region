@@ -11,16 +11,36 @@ let europe = document.querySelector("#europe");
 let australiaOceania = document.querySelector("#australia-oceania");
 let allContinent = document.querySelector("#all-continent");
 let inputSearch = document.querySelector("#inputSearch");
+let bgImg = document.getElementById("bg-img");
+let buttons = document.querySelectorAll(".all-light");
+let bgNav = document.getElementById("bg-navbar");
+let regionNavbar = document.querySelectorAll(".region-navbar");
+let commons = document.querySelectorAll(".common");
+let bgModal = document.getElementById("bg-modal");
+let dark = document.getElementById("dark");
+let light = document.getElementById("light");
 // -------------------------------------------
 let errorHTML = `
 <div class="spinner-border text-danger" role="status">
 <span class="visually-hidden">Loading...</span>
 </div>
 `;
+let errorTextHTML = `
+<div class="text-center fs-1">
+<i class="fa-solid fa-xmark fa-xl text-danger"></i>
+<span class="text-danger fw-bold">write the text</span>
+</div>
+`;
 
+let errorСorrectlyHTML = `
+<div class="text-center fs-1">
+<i class="fa-solid fa-xmark fa-xl text-danger"></i>
+<span class="text-danger fw-bold">write the text correctly</span>
+</div>
+`;
 let loadingHTML = `
-<div class="spinner-border text-success" role="status">
-<span class="visually-hidden">Loading...</span>
+<div class="text-center">
+<span class="loader"></span>
 </div>
 `;
 
@@ -39,14 +59,16 @@ let setRegions = async () => {
     repons.map((item, index) => {
       allProduct.innerHTML += `
   
-      <div class="wrappen col-4 py-3 ">
+      <div class="wrappen col-12 col-sm-6 col-xl-4 py-3 ">
             <div
-              class=" d-flex gap-3 align-items-center justify-content-between card-republik"
+              class=" d-flex flex-column  align-items-center justify-content-between card-republik"
               onclick="setModal(${index})"
-            >
-              <img src="${item.flags.png}" alt="" />
+            > <div class="card-animat">
+            
+            <img src="${item.flags.png}" alt="" class="img-animat"/>
+            </div>
 
-              <div>
+              <div class="common">
                <h3> ${item.name.common} </h3>
               </div>
             </div>
@@ -54,9 +76,9 @@ let setRegions = async () => {
 
   `;
     });
-    console.log(repons);
   } catch (error) {
     console.log("error :" + error);
+    allProduct.innerHTML = errorHTML;
   }
 };
 
@@ -78,6 +100,7 @@ let setModal = async (index) => {
   capital.innerHTML = respons[index].capital[0];
 
   let languages = document.querySelector("#languages");
+  languages.innerHTML = "";
   for (const item in respons[index].languages) {
     languages.innerHTML += ` /`;
     languages.innerHTML += respons[index].languages[item];
@@ -101,33 +124,76 @@ let setModal = async (index) => {
 
 // -----------------------------------
 
-let btnSearch = async (index) => {
-  console.log(inputSearch.value);
-  let respons = await getRegions();
+let btnSearch = async () => {
+  let great = true;
 
-  console.log(respons);
+  if (inputSearch.value !== "") {
+    let respons = await getRegions();
 
-  respons.map((item, index) => {
-    if (item.name.common === inputSearch.value) {
-      allProduct.innerHTML = `
+    console.log(respons);
+
+    respons.map((item, index) => {
+      if (item.name.common === inputSearch.value) {
+        allProduct.innerHTML = `
   
-     <div class="wrappen col-4 py-3 ">
-        <div
-          class=" d-flex gap-3 align-items-center justify-content-between card-republik"
-          onclick="setModal(${index})"
-        >
-          <img src="${item.flags.png}" alt="" />
+     <div class="wrappen col-12 col-sm-6 col-xl-4 py-3 ">
+            <div
+              class=" d-flex flex-column  align-items-center justify-content-between card-republik"
+              onclick="setModal(${index})"
+            >
+              <img src="${item.flags.png}" alt="" />
 
-          <div>
-          <h3> ${item.name.common} </h3>
+              <div class="common">
+               <h3> ${item.name.common} </h3>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
   `;
+        great = false;
+      }
+    });
+
+    if (great) {
+      allProduct.innerHTML = errorСorrectlyHTML;
     }
-  });
+  } else {
+    allProduct.innerHTML = errorTextHTML;
+  }
 };
+
+// ------------------------------------------
+
+dark.addEventListener("click", () => {
+  document.body.style.background = "#0F111A";
+  bgNav.style.background = "#1E2536";
+  buttons.forEach(function (button) {
+    button.classList.add("all-dark");
+  });
+
+  regionNavbar.forEach(function (nav) {
+    nav.style.color = "white";
+  });
+
+  bgModal.style.backgroundColor = "#1E2536";
+  bgModal.style.color = "white";
+});
+// =======================================
+
+light.addEventListener("click", () => {
+  document.body.style.background = "#0d9898";
+  bgNav.style.background = "white";
+  buttons.forEach(function (button) {
+    button.className = "all-light";
+  });
+
+  regionNavbar.forEach(function (nav) {
+    nav.style.color = "black";
+  });
+
+  bgModal.style.backgroundColor = "white";
+  bgModal.style.color = "black";
+});
 
 // ------------------------------
 asia.addEventListener("click", () => {

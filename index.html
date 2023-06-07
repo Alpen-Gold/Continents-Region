@@ -25,11 +25,26 @@
     />
   </head>
   <body>
-    <div class="big-cards">
-      <nav class="navbar navbar-expand-lg bg-danger">
+    <div id="bg-img">
+      <!-- navbar start -->
+
+      <nav
+        class="navbar navbar-expand-lg bg-navbar position-sticky top-0 z-3"
+        id="bg-navbar"
+      >
         <div class="container-fluid">
+          <div class="dark-light me-auto d-flex align-items-center gap-2">
+            <button id="dark" class="all-light">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+
+            <button id="light" class="all-light">
+              <i class="fa-solid fa-sun"></i>
+            </button>
+          </div>
+
           <button
-            class="navbar-toggler ms-auto"
+            class="navbar-toggler ms-auto fs-6"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -37,44 +52,39 @@
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <i class="fa-solid fa-bars"></i>
           </button>
+
           <div
             class="collapse navbar-collapse gap-3"
             id="navbarSupportedContent"
           >
-            <div class="ps-2">
-              <button class="btn-primary btn" id="btn-ru">ru</button>
-              <button class="btn-primary btn" id="btn-uz">uz</button>
-            </div>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
-              <button class="btn btn-primary" id="all-continent">All</button>
-              <button class="btn btn-primary" id="asia">Asia</button>
-              <button class="btn btn-primary" id="africa">Africa</button>
-              <button class="btn btn-primary" id="europe">Europe</button>
-              <button class="btn btn-primary" id="australia-oceania">
+              <button class="region-navbar" id="all-continent">All</button>
+              <button class="region-navbar" id="asia">Asia</button>
+              <button class="region-navbar" id="africa">Africa</button>
+              <button class="region-navbar" id="europe">Europe</button>
+              <button class="region-navbar" id="australia-oceania">
                 Australia/Oceania
               </button>
             </ul>
             <div class="d-flex">
               <input
-                class="form-control me-2"
+                class="form-control me-2 py-2"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
                 id="inputSearch"
               />
-              <button
-                class="btn btn-outline-success"
-                type="submit"
-                onclick="btnSearch()"
-              >
+              <button class="all-light" type="submit" onclick="btnSearch()">
                 Search
               </button>
             </div>
           </div>
         </div>
       </nav>
+      <!-- navbar end -->
+
       <!-- Modal -->
       <div
         class="modal fade"
@@ -84,11 +94,11 @@
         aria-hidden="true"
       >
         <div class="modal-dialog modal-lg">
-          <div class="modal-content">
+          <div class="modal-content" id="bg-modal">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">
-                Modal title
-              </h1>
+              <div class="w-100 text-center">
+                <h1 class="modal-title fs-3" id="exampleModalLabel"></h1>
+              </div>
               <button
                 type="button"
                 class="btn-close"
@@ -99,7 +109,7 @@
             <div class="modal-body">
               <div class="cards">
                 <div
-                  class="p-2 d-flex gap-3 align-items-center justify-content-center"
+                  class="p-2 d-flex flex-column flex-lg-row gap-4 align-items-center justify-content-between text-center text-lg-start"
                 >
                   <img src="./img/image 2 (4).png" alt="" id="flag" />
 
@@ -116,22 +126,19 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
+              <button type="button" class="all-light" data-bs-dismiss="modal">
                 Close
-              </button>
-              <button type="button" class="btn btn-primary">
-                Save changes
               </button>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Modal end -->
+
+      <!-- product start -->
       <div class="container">
-        <div class="cards row justify-content-center" id="all-product">
+        <div class="cards row justify-content-start my-5 py-3" id="all-product">
           <!-- <div class="wrappen col-3">
             <div
               class="p-2 d-flex align-items-center justify-content-center card-republik"
@@ -153,8 +160,11 @@
       </div>
     </div>
 
+    <!-- product end -->
+
     <!-- ======================================================================== -->
 
+    <!-- bootstrap -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
       integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
@@ -170,6 +180,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+    <!-- script js -->
     <script src="./js/main.js"></script>
   </body>
 </html>

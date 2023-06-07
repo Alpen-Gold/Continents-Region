@@ -4,29 +4,151 @@ html {
 body {
   margin: 0;
   padding: 0;
+  background-color: #0d9898;
 }
 * {
   box-sizing: border-box;
 }
-
-.card-rightn {
-  background-color: blue;
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 4px solid #fff;
+  border-right: 4px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
 }
+.loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border-left: 4px solid #ff3d00;
+  border-bottom: 4px solid transparent;
+  animation: rotation 0.5s linear infinite reverse;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.all-light {
+  background-color: #0d9898;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  transition: 0.6s;
+  &:hover,
+  &:active,
+  &:focus {
+    box-shadow: -3px 3px 0 0 black;
+    background-color: white;
+    color: #0d9898;
+    border: 2px solid #0d9898;
+    transition: 0.6s;
+  }
+}
+
+.all-dark {
+  background-color: #0d9898;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 0 0 white;
+  border: 2px solid transparent;
+  transition: 0.6s;
+  &:hover,
+  &:active,
+  &:focus {
+    box-shadow: -3px 3px 0 0 white;
+    background-color: #0f111a;
+    color: #0d9898;
+    border: 2px solid #0d9898;
+    transition: 0.6s;
+  }
+}
+
+.bg-navbar {
+  background: white;
+  padding: 10px 10px;
+}
+
+.region-navbar {
+  background-color: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 3px 20px;
+  transition: 0.3s;
+  font-style: 17px;
+  font-weight: 600;
+  &:hover {
+    border-bottom: 3px solid #0d9898;
+    transition: 0.3s;
+  }
+}
+
+#inputSearch {
+  background-color: white;
+  border: 2px solid #0d9898;
+  color: #0d9898;
+  transition: 0.3s;
+}
+
 .card-republik {
   box-shadow: 0 10px 10px 0 #00000044;
   border-radius: 10px;
-  padding: 20px 0;
-  padding: 30px !important;
   height: 200px;
+  transition: 0.3s;
+  overflow: hidden;
+  cursor: pointer;
   img {
-    width: 200px;
-    height: 100px;
+    width: 100%;
+    height: 150px;
     object-fit: cover;
+    transition: 1s;
+
+    &:hover {
+      transform: scale(1.2);
+      transition: 1s;
+    }
+  }
+
+  .common {
+    background: white;
+    z-index: 1;
+    padding-top: 10px;
+  }
+
+  div {
+    text-align: center;
+    width: 100%;
+    h3 {
+      padding-bottom: 5px;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 10px 30px 0 #00000044;
+    transition: 0.3s;
   }
 }
 
 #flag {
-  flex: 1;
+  flex: 2;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 15px 20px 0 #00000044;
+  max-width: 400px !important;
 }
 .info {
   flex: 1;
