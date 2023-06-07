@@ -2,7 +2,7 @@ const myModal = new bootstrap.Modal(document.querySelector("#exampleModal"), {
   keyboard: false,
 });
 
-// ----------------
+// by id class....
 
 let allProduct = document.querySelector("#all-product");
 let asia = document.querySelector("#asia");
@@ -19,12 +19,16 @@ let commons = document.querySelectorAll(".common");
 let bgModal = document.getElementById("bg-modal");
 let dark = document.getElementById("dark");
 let light = document.getElementById("light");
-// -------------------------------------------
+// ----------------------------------------
+
+// error
 let errorHTML = `
 <div class="spinner-border text-danger" role="status">
 <span class="visually-hidden">Loading...</span>
 </div>
 `;
+
+// no text error
 let errorTextHTML = `
 <div class="text-center fs-1">
 <i class="fa-solid fa-xmark fa-xl text-danger"></i>
@@ -32,25 +36,33 @@ let errorTextHTML = `
 </div>
 `;
 
+// Сorrectly text
 let errorСorrectlyHTML = `
 <div class="text-center fs-1">
 <i class="fa-solid fa-xmark fa-xl text-danger"></i>
 <span class="text-danger fw-bold">write the text correctly</span>
 </div>
 `;
+
+// spinner loading
 let loadingHTML = `
 <div class="text-center">
 <span class="loader"></span>
 </div>
 `;
-
+// url by
 let url = "https://restcountries.com/v3.1/all";
+
+// start project ==============================================
+
+//  get URL by
 let getRegions = async () => {
   let repons = await axios.get(url);
 
   return repons.data;
 };
 
+// set project card
 let setRegions = async () => {
   try {
     allProduct.innerHTML = loadingHTML;
@@ -81,7 +93,9 @@ let setRegions = async () => {
     allProduct.innerHTML = errorHTML;
   }
 };
+// set project end
 
+// MODAL show()
 let setModal = async (index) => {
   let respons = await getRegions();
 
@@ -121,9 +135,9 @@ let setModal = async (index) => {
   flag.src = respons[index].flags.png;
   myModal.show();
 };
+// MODAL show() end
 
-// -----------------------------------
-
+// btn serch start
 let btnSearch = async () => {
   let great = true;
 
@@ -161,9 +175,44 @@ let btnSearch = async () => {
     allProduct.innerHTML = errorTextHTML;
   }
 };
+// btn search end
 
-// ------------------------------------------
+// click (all continens)
+allContinent.addEventListener("click", () => {
+  url = "https://restcountries.com/v3.1/all";
+  setRegions();
+});
+// -end-
 
+// click (asia)
+asia.addEventListener("click", () => {
+  url = "https://restcountries.com/v3.1/region/asia";
+  setRegions();
+});
+// -end-
+
+// click (europe)
+europe.addEventListener("click", () => {
+  url = "https://restcountries.com/v3.1/region/europe";
+  setRegions();
+});
+// -end-
+
+// click (africa)
+africa.addEventListener("click", () => {
+  url = "https://restcountries.com/v3.1/region/africa";
+  setRegions();
+});
+// -end-
+
+// click (australia/oceania)
+australiaOceania.addEventListener("click", () => {
+  url = "https://restcountries.com/v3.1/region/oceania";
+  setRegions();
+});
+// -end-
+
+//  click dark
 dark.addEventListener("click", () => {
   document.body.style.background = "#0F111A";
   bgNav.style.background = "#1E2536";
@@ -178,8 +227,9 @@ dark.addEventListener("click", () => {
   bgModal.style.backgroundColor = "#1E2536";
   bgModal.style.color = "white";
 });
-// =======================================
+// click dark end
 
+// click light
 light.addEventListener("click", () => {
   document.body.style.background = "#0d9898";
   bgNav.style.background = "white";
@@ -194,41 +244,8 @@ light.addEventListener("click", () => {
   bgModal.style.backgroundColor = "white";
   bgModal.style.color = "black";
 });
+// click light end
 
-// ------------------------------
-asia.addEventListener("click", () => {
-  url = "https://restcountries.com/v3.1/region/asia";
-  setRegions();
-});
-
-// ------------------------------
-
-allContinent.addEventListener("click", () => {
-  url = "https://restcountries.com/v3.1/all";
-  setRegions();
-});
-
-// ------------------------------
-
-europe.addEventListener("click", () => {
-  url = "https://restcountries.com/v3.1/region/europe";
-  setRegions();
-});
-
-// ------------------------------
-
-africa.addEventListener("click", () => {
-  url = "https://restcountries.com/v3.1/region/africa";
-  setRegions();
-});
-
-// ------------------------------
-
-australiaOceania.addEventListener("click", () => {
-  url = "https://restcountries.com/v3.1/region/oceania";
-  setRegions();
-});
-
-// ------------------------------
-
+// ==========
 setRegions();
+// ==========
