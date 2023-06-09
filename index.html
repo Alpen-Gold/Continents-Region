@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CAT</title>
+    <title>Project</title>
     <!-- bootstrap link -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
@@ -41,6 +41,14 @@
             <button id="light" class="all-light">
               <i class="fa-solid fa-sun"></i>
             </button>
+
+            <button onclick="newRepublicBtn()" class="all-light">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+
+            <button class="all-light" id="historyBtn">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
           </div>
 
           <button
@@ -70,11 +78,11 @@
             </ul>
             <div class="d-flex">
               <input
-                class="form-control me-2 py-2"
+                class="form-control me-2 py-2 inputSearch"
                 type="search"
+                id="inputSearch"
                 placeholder="Search"
                 aria-label="Search"
-                id="inputSearch"
               />
               <button class="all-light" type="submit" onclick="btnSearch()">
                 Search
@@ -109,7 +117,7 @@
             <div class="modal-body">
               <div class="cards">
                 <div
-                  class="p-2 d-flex flex-column flex-lg-row gap-4 align-items-center justify-content-between text-center text-lg-start"
+                  class="p-2 d-flex flex-column flex-lg-row gap-4 align-items-center justify-content-between text-start"
                 >
                   <img src="./img/image 2 (4).png" alt="" id="flag" />
 
@@ -121,6 +129,7 @@
                     <p>maps : <span id="maps"></span></p>
                     <p>region : <span id="region"></span></p>
                     <p>fifa : <span id="fifa"></span></p>
+                    <p id="pGerb">gerb : <img src="" alt="" id="gerb" /></p>
                   </div>
                 </div>
               </div>
@@ -133,8 +142,258 @@
           </div>
         </div>
       </div>
+      <!-- modal end -->
 
+      <!-- modal new republik -->
+      <div
+        class="modal fade"
+        id="exampleModalRepublic"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content" id="bg-modal-post">
+            <div class="modal-header">
+              <div class="w-100 text-center">
+                <h1 class="modal-title fs-3 postTitle" id="exampleModalLabel">
+                  New Republic
+                </h1>
+              </div>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="cards row">
+                <div class="col-6 p-2">
+                  <input
+                    id="newRepublic"
+                    type="text"
+                    class="inputSearch form-control px-2 py-2 w-100"
+                    placeholder="name Republic . . ."
+                  />
+                </div>
+
+                <div class="col-6 p-2">
+                  <input
+                    id="newCapital"
+                    type="text"
+                    class="inputSearch form-control px-2 py-2 w-100"
+                    placeholder="name Capital . . ."
+                  />
+                </div>
+
+                <div class="col-6 p-2">
+                  <input
+                    id="newPopulation"
+                    type="number"
+                    class="inputSearch form-control px-2 py-2 w-100"
+                    placeholder="name Population . . ."
+                  />
+                </div>
+
+                <div class="col-6 p-2">
+                  <input
+                    id="newFlag"
+                    type="file"
+                    class="inputSearch form-control px-2 py-2 w-100"
+                    placeholder="name Flag . . ."
+                  />
+                </div>
+
+                <div class="col-6 p-2">
+                  <input
+                    id="newFifa"
+                    type="text"
+                    class="inputSearch form-control px-2 py-2 w-100"
+                    placeholder="name FIFA . . ."
+                  />
+                </div>
+
+                <div class="col-6 p-2">
+                  <input
+                    id="newLanguges"
+                    type="text"
+                    class="inputSearch form-control px-2 py-2 w-100"
+                    placeholder="name languges . . ."
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="all-light" data-bs-dismiss="modal">
+                Close
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                id="setNewRepublicBtn"
+              >
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- Modal end -->
+
+      <!-- put modal -->
+      <div
+        class="modal fade"
+        id="exampleModalPut"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content" id="bg-modal-republic">
+            <div class="modal-header">
+              <div class="w-100 text-center">
+                <h1 class="modal-title fs-3" id="exampleModalLabel">
+                  Republic
+                </h1>
+              </div>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="cards row">
+                <div class="col-6 p-2">
+                  <input
+                    id="newRepublicPut"
+                    type="text"
+                    class="inputSearch form-control px-2 py-2 w-100"
+                    placeholder="name Republic . . ."
+                  />
+                </div>
+
+                <div class="col-6 p-2">
+                  <input
+                    id="newCapitalPut"
+                    type="text"
+                    class="inputSearch form-control px-2 py-2 w-100"
+                    placeholder="name Capital . . ."
+                  />
+                </div>
+
+                <div class="col-6 p-2">
+                  <input
+                    id="newPopulationPut"
+                    type="number"
+                    class="inputSearch form-control px-2 py-2 w-100"
+                    placeholder="name Population . . ."
+                  />
+                </div>
+
+                <div class="col-6 p-2">
+                  <input
+                    id="newFlagPut"
+                    type="file"
+                    class="inputSearch form-control px-2 py-2 w-100"
+                    placeholder="name Flag . . ."
+                  />
+                </div>
+
+                <div class="col-6 p-2">
+                  <input
+                    id="newFifaPut"
+                    type="text"
+                    class="inputSearch form-control px-2 py-2 w-100"
+                    placeholder="name FIFA . . ."
+                  />
+                </div>
+
+                <div class="col-6 p-2">
+                  <input
+                    id="newLangugesPut"
+                    type="text"
+                    class="inputSearch form-control px-2 py-2 w-100"
+                    placeholder="name languges . . ."
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="all-light" data-bs-dismiss="modal">
+                Close
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick="putModalBtn()"
+              >
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- modal end -->
+
+      <!-- modal history -->
+      <div
+        class="modal fade"
+        id="exampleModalHistory"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-fullscreen">
+          <div class="modal-content" id="bg-modal-history">
+            <div class="modal-header">
+              <div class="w-100 text-center">
+                <h1 class="modal-title fs-1" id="exampleModalLabel">
+                  History New Republik
+                </h1>
+              </div>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="cardHistory">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Republic</th>
+                      <th scope="col">Capital</th>
+                      <th scope="col">Population</th>
+                      <th scope="col">Fifa</th>
+                      <th scope="col">Languages</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-group-divider" id="tbodyHistory">
+                    <!-- <tr>
+                      <th scope="row">1</th>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr> -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="all-light" data-bs-dismiss="modal">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- modal history end -->
 
       <!-- product start -->
       <div class="container">
